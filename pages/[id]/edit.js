@@ -23,14 +23,17 @@ const EditNote = ({ note }) => {
 
     const updateNote = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/notes/${router.query.id}`, {
-                method: 'PUT',
+            const res = await fetch(
+              `https://make-notes.vercel.app/api/notes/${router.query.id}`,
+              {
+                method: "PUT",
                 headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify(form)
-            })
+                body: JSON.stringify(form),
+              }
+            );
             router.push("/");
         } catch (error) {
             console.log(error);
@@ -99,7 +102,7 @@ const EditNote = ({ note }) => {
 }
 
 EditNote.getInitialProps = async ({ query: { id } }) => {
-    const res = await fetch(`http://localhost:3000/api/notes/${id}`);
+    const res = await fetch(`https://make-notes.vercel.app/api/notes/${id}`);
     const { data } = await res.json();
 
     return { note: data }

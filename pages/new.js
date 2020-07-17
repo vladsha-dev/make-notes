@@ -23,14 +23,14 @@ const NewNote = () => {
 
     const createNote = async () => {
         try {
-            const res = await fetch('http://localhost:3000/api/notes', {
-                method: 'POST',
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(form)
-            })
+            const res = await fetch("https://make-notes.vercel.app/api/notes", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(form),
+            });
             router.push("/");
         } catch (error) {
             console.log(error);
